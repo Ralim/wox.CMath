@@ -1,0 +1,12 @@
+﻿{
+  "ID": "9823489732478923487923497234F135",
+  "ActionKeyword": "*",
+  "Name": "CMath",
+  "Description": "C like maths",
+  "Author": "Ben V. Brown",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "",
+  "IcoPath": "icon.png",
+  "ExecuteFileName": "CMath.dll"
+} 
