@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CMath
 {
@@ -119,7 +117,7 @@ namespace CMath
 
         static bool validAction(char ch)
         {
-            return ch == '*' || ch == '/' || ch == '+' || ch == '-' || ch == '^' || ch == '#' || ch == '$' || ch == '>' || ch == '<';
+            return ch == '*' || ch == '/' || ch == '+' || ch == '-' || ch == '^' || ch == '#' || ch == '$' || ch == '>' || ch == '<' || ch == '|' || ch == '&' || ch == '%';
         }
 
         static char updateAction(string item, ref int from, char ch, char to)
@@ -182,10 +180,16 @@ namespace CMath
                     leftCell.Value += rightCell.Value;
                     break;
                 case '#': // left shift
-                    leftCell.Value = (double)( ((long)leftCell.Value)<<( (int)rightCell.Value) );
+                    leftCell.Value = ((long)leftCell.Value) << ((int)rightCell.Value);
                     break;
                 case '$'://right shift
-                    leftCell.Value = (double)(((long)leftCell.Value) >> ((int)rightCell.Value));
+                    leftCell.Value = ((long)leftCell.Value) >> ((int)rightCell.Value);
+                    break;
+                case '|'://OR
+                    leftCell.Value = ((int)leftCell.Value) | ((int)rightCell.Value);
+                    break;
+                case '%':// Mod
+                    leftCell.Value = ((int)leftCell.Value) % ((int)rightCell.Value);
                     break;
                 case '<':
                     leftCell.Value = leftCell.Value < rightCell.Value ? 1 : 0;
@@ -212,6 +216,8 @@ namespace CMath
                 case '*':
                 case '#':
                 case '$':
+                case '|':
+                case '%':
                 case '/': return 3;
                 case '+':
                 case '<':
